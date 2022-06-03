@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+</style>
+<body>
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        {% for category in categories %}
+        <input type="radio" name="coffee" id="" value="{{category.name}}">{{category.name}}
+        {% endfor %}
+        <button type="submit">검색</button>
+    </form>
+    <div class="box">
+    {% for drink in drinks %}
+    <div style="margin: 5px;"><img src="{{drink.imgurl}}"><div>{{drink.title}}</div></div>
+    {% endfor %}
+</div>
+</body>
+</html>
